@@ -6,5 +6,6 @@ class Food {
     public function new(hungerL:Int,massL:Int) {
         this.hunger=hungerL;
         this.mass=massL;
+
     }
 }
