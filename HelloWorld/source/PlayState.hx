@@ -54,6 +54,16 @@ class PlayState extends FlxState
         add(flxBtn);
         fxbtns.push(flxBtn);
     */
+
+        if (FlxG.mouse.justPressed) {
+        }
+
+        if (FlxG.mouse.pressed) {
+        }
+
+        if (FlxG.mouse.justReleased) {
+        }
+
 		super.update();
 	}	
 }
