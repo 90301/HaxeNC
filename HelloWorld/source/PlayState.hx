@@ -38,6 +38,9 @@ class PlayState extends FlxState
 		super.destroy();
 	}
 
+    private var mouseStartX=0, mouseStartY=0;
+    private var mouseDragging=false;
+
 	/**
 	 * Function that is called once every frame.
 	 */
@@ -56,12 +59,25 @@ class PlayState extends FlxState
     */
 
         if (FlxG.mouse.justPressed) {
+            mouseStartX = FlxG.mouse.x;
+            mouseStartY = FlxG.mouse.y;
         }
 
         if (FlxG.mouse.pressed) {
+            var mouseDX = FlxG.mouse.x - mouseStartX;
+            var mouseDY = FlxG.mouse.y - mouseStartY;
+            if (mouseDX > 2 || mouseDY > 2) {
+                mouseDragging = true;
+            }
+            if (mouseDragging) {
+            }
         }
 
         if (FlxG.mouse.justReleased) {
+            if (mouseDragging) {
+            } else {
+                Main.player.setDest(FlxG.mouse.x, FlxG.mouse.y);
+            }
         }
 
 		super.update();
