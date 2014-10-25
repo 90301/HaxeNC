@@ -14,4 +14,10 @@ class Player {
         destX=dX;
         destY=dY;
     }
+    //call this every time you want to move
+    //this is a function so we can speed up time
+    public function move() {
+        var diffX = dX-x;
+        var diffY = dY-y;
+    }
 }
