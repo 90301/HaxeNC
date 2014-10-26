@@ -1,4 +1,4 @@
-package GoodMaster;
+package goodmaster;
 import Bool;
 class Good {
     var name = "";

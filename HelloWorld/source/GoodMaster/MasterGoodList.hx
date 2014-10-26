@@ -1,4 +1,4 @@
-package GoodMaster;
+package goodmaster;
 class MasterGoodList {
     public var goodList:Array<Good> = new Array<Good>();
     public function new() {

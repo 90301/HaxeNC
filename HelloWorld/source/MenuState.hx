@@ -22,7 +22,9 @@ class MenuState extends FlxState
     private var _btnPlay:FlxButton;
     private var _btnMute:FlxButton;
     public var bgmusic:FlxSound;
-    static var musics = ["assets/music/..."];
+    static var musics = ["assets/music/Ballad In D Minor.mp3",
+                         "assets/music/Sad Atmospheric Blues (B Minor).mp3",
+                         "assets/music/Sarah.mp3"];
 
 	override public function create():Void
 	{

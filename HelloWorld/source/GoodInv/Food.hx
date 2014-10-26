@@ -1,4 +1,4 @@
-package GoodInv;
+package goodinv;
 class Food {
     var deterioration = 100;
     var decay = 0;

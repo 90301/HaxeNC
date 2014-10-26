@@ -1,4 +1,4 @@
-package GoodMaster;
+package goodmaster;
 class Food {
     var hunger;
     var deterior;
