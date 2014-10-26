@@ -1,5 +1,6 @@
 package;
 
+import GoodMaster.MasterGoodList;
 import flash.display.Sprite;
 import flash.display.StageAlign;
 import flash.display.StageScaleMode;
@@ -12,6 +13,8 @@ class Main extends Sprite
 {
     public static var map = new WorldMap(250, 250);
     public static var player = new Player();
+
+    public static var mgl = new MasterGoodList();
 
 	var gameWidth:Int = 640; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
 	var gameHeight:Int = 480; // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).
