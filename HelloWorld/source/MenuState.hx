@@ -21,7 +21,7 @@ class MenuState extends FlxState
     var inti = 0;
     private var _btnPlay:FlxButton;
     private var _btnMute:FlxButton;
-    public static var bgmusic:FlxSound;
+    public static var bgmusic:FlxSound = null;
     static var musics = ["assets/music/Ballad In D Minor.ogg",
                          "assets/music/Sad Atmospheric Blues _B Minor_.ogg",
                          "assets/music/Sarah.ogg"];
@@ -44,6 +44,7 @@ class MenuState extends FlxState
         add(_btnPlay);
 
         playMusic();
+        clickMute();
 
 		super.create();
 	}
