@@ -1,8 +1,8 @@
 package ;
-import goodmaster.Good;
+import goodinv.GoodI;
 import Math;
 class Player {
-    var inventory:Array<Good> = new Array<Good>();
+    var inventory:Array<GoodI> = new Array<GoodI>();
     public var x:Float = 0.0;
     public var y:Float = 0.0;
     var moveSpeed:Float = 2.0;
@@ -10,7 +10,7 @@ class Player {
     var destY:Float = 0.0;
 
     public function new() {
-        inventory.push(new Good("Test", "Test", 1, 1, 1));
+        inventory.push(new GoodI("Test", "Test", 1, 1, 1));
     }
     public function setDest(dX,dY) {
         destX=dX;

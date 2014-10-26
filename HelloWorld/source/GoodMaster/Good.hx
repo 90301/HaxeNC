@@ -23,12 +23,12 @@ class Good {
             createFood(v1,v2);
         }
 
-    //four args
-    //weapon
-    //v1:damage
-    //v2:speed (wait time to attack again, 60 cycles per sec so speed=60 is 1 atk/sec 30= 2 atk/sec)
-    //v3:ranged weapon? (true if ranged, false if melee)
-    //v4:range (1 distance unit per point)
+        //four args
+        //weapon
+        //v1:damage
+        //v2:speed (wait time to attack again, 60 cycles per sec so speed=60 is 1 atk/sec 30= 2 atk/sec)
+        //v3:ranged weapon? (true if ranged, false if melee)
+        //v4:range (1 distance unit per point)
 
 
         name = nameL;
