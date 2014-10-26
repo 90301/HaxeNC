@@ -25,10 +25,13 @@ class PlayState extends FlxState
     private var fxbtn:FlxButton;
     private var fxbtns:Array<FlxButton> = new Array<FlxButton>();
     var playerSprite:FlxSprite;
+    var tiles:Array<Array<FlxSprite>> = new Array<Array<FlxSprite>>();
 
 	override public function create():Void
 	{
         for (x in 0 ... Main.map.w) {
+            var tileCol:Array<FlxSprite> = new Array<FlxSprite>();
+            tiles.push(tileCol);
             for (y in 0 ... Main.map.h) {
                 var terrain = Main.map.getTerrain(10*x, 10*y);
                 var tile = new FlxSprite();
@@ -48,7 +51,7 @@ class PlayState extends FlxState
                 tile.updateHitbox();
                 tile.x = 10*x;
                 tile.y = 10*y;
-                add(tile);
+                tileCol.push(tile);
             }
         }
 
@@ -58,7 +61,7 @@ class PlayState extends FlxState
         playerSprite.updateHitbox();
         add(playerSprite);
 
-        FlxG.camera.follow(playerSprite, FlxCamera.STYLE_TOPDOWN_TIGHT, 1);
+        FlxG.camera.follow(playerSprite, FlxCamera.STYLE_TOPDOWN_TIGHT);
         FlxG.camera.setBounds(0, 0, 10*Main.map.w, 10*Main.map.h, true);
         FlxG.camera.flash(0);
 
@@ -128,5 +131,35 @@ class PlayState extends FlxState
         playerSprite.y = Main.player.y;
 
 		super.update();
-	}	
+	}
+
+    override public function draw() {
+        var camW = FlxG.camera.width;
+        var camH = FlxG.camera.height;
+        var startX;
+        if (playerSprite.x < camW/2) {
+            startX = camW/2;
+        } else if (playerSprite.x >= 10*Main.map.w - camW/2) {
+            startX = 10*Main.map.w - camW/2;
+        } else {
+            startX = playerSprite.x;
+        }
+        var startY;
+        if (playerSprite.y < camH/2) {
+            startY = camH/2;
+        } else if (playerSprite.y >= 10*Main.map.h - camH/2) {
+            startY = 10*Main.map.h - camH/2;
+        } else {
+            startY = playerSprite.y;
+        }
+        for (x in (Std.int((startX-camW/2)/10)-5) ... (Std.int((startX+camW/2)/10))+5) {
+            for (y in (Std.int((startY-camH/2)/10)-5) ... (Std.int((startY+camH/2)/10))+5) {
+                if (x >= 0 && x < Main.map.w && y >= 0 && y < Main.map.h) {
+                    tiles[x][y].draw();
+                }
+            }
+        }
+
+        super.draw();
+    }
 }
