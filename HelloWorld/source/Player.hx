@@ -10,7 +10,7 @@ class Player {
     var destY:Float = 0.0;
 
     public function new() {
-        inventory.push(new Good());
+        inventory.push(new Good("Test", "Test", 1, 1, 1));
     }
     public function setDest(dX,dY) {
         destX=dX;
@@ -19,8 +19,8 @@ class Player {
     //call this every time you want to move
     //this is a function so we can speed up time
     public function move() {
-        var xspeed=0;
-        var yspeed=0;
+        var xspeed:Float=0;
+        var yspeed:Float=0;
         var noRecalc:Bool = false;
         var diffX:Float = destX-x;
         var diffY:Float = destY-y;
