@@ -17,6 +17,18 @@ class Good {
         createFood(v1,v2);
     }
     }
+    public function new(nameL:String,typeL:String,massL:Int,v1:Int,v2:Int) {
+    //two args
+    //food
+    //hunger satisfication v1
+    //Deterioration v2 (higher is faster spoiling, 0 is never spoiling)
+
+        name = nameL;
+        type = goodLookup(typeL);
+        if (type==0) {
+            createFood(v1,v2);
+        }
+    }
 
     public function createFood(hungerSat:Int,deterior:Int):Void {
         special = new Food(hungerSat,deterior);

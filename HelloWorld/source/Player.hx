@@ -19,8 +19,27 @@ class Player {
     //call this every time you want to move
     //this is a function so we can speed up time
     public function move() {
+        var xspeed=0;
+        var yspeed=0;
+        var noRecalc:Bool = false;
         var diffX:Float = destX-x;
         var diffY:Float = destY-y;
+        if (Math.abs(diffX)<=1 && Math.abs(diffY)>1) {
+            xspeed=0;
+            yspeed=yspeed/Math.abs(yspeed);
+            noRecalc = true;
+        }
+        if (Math.abs(diffY)<=1 && Math.abs(diffX)>1) {
+            yspeed = 0;
+            xspeed=xspeed/Math.abs(xspeed);
+            noRecalc = true;
+        }
+        if (Math.abs(diffX)<=1 && Math.abs(diffY)<=1) {
+            xspeed = 0;
+            yspeed = 0;
+            noRecalc = true;
+        }
+
         if (Math.abs(diffX)>Math.abs(diffY)) {
             diffY=diffY/Math.abs(diffX);
             diffX=diffX/Math.abs(diffX);
@@ -28,14 +47,16 @@ class Player {
             diffX=diffX/Math.abs(diffY);
             diffY=diffY/Math.abs(diffY);
         }
-        var xspeed=diffX*moveSpeed;
-        var yspeed=diffY*moveSpeed;
-        if (Math.abs(x-destX)>Math.abs(xspeed) && Math.abs(y-destY)>Math.abs(yspeed)) {
-            x+=xspeed;
-            y+=yspeed;
-        } else {
-            x = destX;
-            y = destY;
+        xspeed=diffX*moveSpeed;
+        yspeed=diffY*moveSpeed;
+        if (noRecalc != true) {
+            if (Math.abs(x-destX)>Math.abs(xspeed) && Math.abs(y-destY)>Math.abs(yspeed)) {
+                x+=xspeed;
+                y+=yspeed;
+            } else {
+                x = destX;
+                y = destY;
+            }
         }
     }
 }
