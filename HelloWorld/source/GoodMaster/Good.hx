@@ -6,21 +6,23 @@ class Good {
     var mass = 0;
     var special:Dynamic;
 
+    /*
     public function new(nameL:String,typeL:String,massL:Int,v1:Int,v2:Int) {
-    //two args
-    //food
-    //hunger satisfication v1
-    //Deterioration v2 (higher is faster spoiling, 0 is never spoiling)
+
+    }
+    */
+    public function new(nameL:String,typeL:String,massL:Int,v1:Int,v2:Int,?v3:Bool,?v4:Int) {
+        //two args
+        //food
+        //hunger satisfication v1
+        //Deterioration v2 (higher is faster spoiling, 0 is never spoiling)
 
         name = nameL;
         type = goodLookup(typeL);
         if (type==0) {
             createFood(v1,v2);
-        } else {
-            trace("You dun goofed and typed food wrong");
         }
-    }
-    public function new(nameL:String,typeL:String,massL:Int,v1:Int,v2:Int,v3:Bool,v4:Int) {
+
     //four args
     //weapon
     //v1:damage
@@ -33,8 +35,6 @@ class Good {
         type = goodLookup(typeL);
         if (type==1) {
             createWeapon(v1,v2,v3,v4);
-        } else {
-            trace("You dun goofed and typed weapon wrong");
         }
     }
 
