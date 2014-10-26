@@ -1,10 +1,10 @@
 package goodmaster;
 
 class Good {
-    var name = "";
-    var type = -1;
-    var mass = 0;
-    var special:Dynamic;
+    public var name = "";
+    public var type = -1;
+    public var mass = 0;
+    public var special:Dynamic;
 
     /*
     public function new(nameL:String,typeL:String,massL:Int,v1:Int,v2:Int) {

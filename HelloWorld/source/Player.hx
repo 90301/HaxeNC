@@ -10,7 +10,7 @@ class Player {
     var destY:Float = 0.0;
 
     public function new() {
-        inventory.push(new GoodI("Test", "Test", 1, 1, 1));
+        inventory.push(new GoodI(1,2));
     }
     public function setDest(dX,dY) {
         destX=dX;
