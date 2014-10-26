@@ -1,4 +1,5 @@
 package ;
+import GoodMaster.Good;
 import Math;
 class Player {
     var inventory:Array<Good> = new Array<Good>();
