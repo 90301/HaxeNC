@@ -1,4 +1,5 @@
 package ;
+import Math;
 class Player {
     var inventory:Array<Good> = new Array<Good>();
     var x=0;
@@ -17,7 +18,21 @@ class Player {
     //call this every time you want to move
     //this is a function so we can speed up time
     public function move() {
-        var diffX = dX-x;
-        var diffY = dY-y;
+    if ((x-destX)>moveSpeed && (y-destY)>moveSpeed) {
+        var diffX = destX-x;
+        var diffY = destY-y;
+        if (Math.abs(diffX)>Math.abs(diffY)) {
+            diffY=diffY/Math.abs(diffX);
+            diffX=diffX/Math.abs(diffX);
+        } else {
+            diffX=diffX/Math.abs(diffY);
+            diffY=diffY/Math.abs(diffY);
+        }
+        var xspeed=diffX*moveSpeed;
+        var yspeed=diffY*moveSpeed;
+        x+=xspeed;
+        y+=yspeed;
+
+    }
     }
 }
