@@ -8,6 +8,7 @@ import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
 import flixel.util.FlxColor;
+import flixel.util.FlxPoint;
 
 /**
  * A FlxState which can be used for the actual gameplay.
@@ -57,7 +58,7 @@ class PlayState extends FlxState
         playerSprite.updateHitbox();
         add(playerSprite);
 
-        FlxG.camera.follow(playerSprite, FlxCamera.STYLE_TOPDOWN, 1);
+        FlxG.camera.follow(playerSprite, FlxCamera.STYLE_TOPDOWN_TIGHT, 2);
 
         super.create();
 	}
