@@ -21,9 +21,15 @@ class PlayState extends FlxState
     var height = 20;
     private var fxbtn:FlxButton;
     private var fxbtns:Array<FlxButton> = new Array<FlxButton>();
+    var playerSprite:FlxSprite;
+
 	override public function create():Void
 	{
-        xPos=0;
+        playerSprite = new FlxSprite();
+        playerSprite.loadGraphic("assets/images/player.png");
+        playerSprite.width = 10;
+        playerSprite.height = 10;
+        add(playerSprite);
 
 		super.create();
 	}
@@ -79,6 +85,9 @@ class PlayState extends FlxState
                 Main.player.setDest(FlxG.mouse.x, FlxG.mouse.y);
             }
         }
+
+        playerSprite.x = Main.player.x;
+        playerSprite.y = Main.player.y;
 
 		super.update();
 	}	
