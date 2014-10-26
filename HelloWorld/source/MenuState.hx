@@ -21,20 +21,20 @@ class MenuState extends FlxState
     var inti = 0;
     private var _btnPlay:FlxButton;
     private var _btnMute:FlxButton;
-    public var bgmusic:FlxSound;
-    static var musics = ["assets/music/Ballad In D Minor.wav",
-                         "assets/music/Sad Atmospheric Blues (B Minor).wav",
-                         "assets/music/Sarah.wav"];
+    public static var bgmusic:FlxSound;
+    static var musics = ["assets/music/Ballad In D Minor.ogg",
+                         "assets/music/Sad Atmospheric Blues _B Minor_.ogg",
+                         "assets/music/Sarah.ogg"];
 
 	override public function create():Void
 	{
         inti=0;
 
-        var walkerText = new FlxText(inti, FlxG.width/2 - 75, FlxG.height/2, "Music by Walker Cobb");
+        var walkerText = new FlxText(FlxG.width/2 - 75, FlxG.height/2, "Music by Walker Cobb");
         add(walkerText);
-        var walkerIsFuckingAwesomeText = new FlxText(inti, FlxG.width/2 - 125, FlxG.height/2 + 32, "He's really awesome. We called him up at 1 in");
-        var wifat2 = new FlxText(inti, FlxG.width/2 - 125, FlxG.height/2 + 56, "the morning, and he got us this soundtrack.");
-        var walkerYoutubeText = new FlxText(inti, FlxG.width/2 - 100, FlxG.height/2 + 88, "youtube.com/user/WalkerCobbMusic");
+        var walkerIsFuckingAwesomeText = new FlxText(FlxG.width/2 - 125, FlxG.height/2 + 32, "He's really awesome. We called him up at 1 in");
+        var wifat2 = new FlxText(FlxG.width/2 - 125, FlxG.height/2 + 56, "the morning, and he got us this soundtrack.");
+        var walkerYoutubeText = new FlxText(FlxG.width/2 - 100, FlxG.height/2 + 88, "youtube.com/user/WalkerCobbMusic");
         add(walkerIsFuckingAwesomeText);
         add(wifat2);
         add(walkerYoutubeText);
@@ -43,9 +43,7 @@ class MenuState extends FlxState
         _btnPlay = new FlxButton(FlxG.width/2 - 50, FlxG.height/3, "play", clickPlay);
         add(_btnPlay);
 
-        bgmusic = new FlxSound();
         playMusic();
-        bgmusic.play();
 
 		super.create();
 	}
@@ -65,8 +63,15 @@ class MenuState extends FlxState
         }
     }
 
-    private function playMusic():Void {
-        bgmusic.loadEmbedded(FlxRandom.getObject(musics), playMusic);
+    public static function playMusic():Void {
+        var wasPlaying = false;
+        if (bgmusic != null) {
+            wasPlaying = bgmusic.playing;
+        }
+        bgmusic = FlxG.sound.play(FlxRandom.getObject(musics), 1, false, true, playMusic);
+        if (wasPlaying) {
+            bgmusic.pause();
+        }
     }
 
 	/**

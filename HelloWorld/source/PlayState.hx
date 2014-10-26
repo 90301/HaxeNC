@@ -69,6 +69,8 @@ class PlayState extends FlxState
         Main.player.y = 500;
         Main.player.setDest(500, 500);
 
+        MenuState.playMusic();
+
         super.create();
 	}
 	
