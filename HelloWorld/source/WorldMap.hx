@@ -12,26 +12,25 @@ class WorldMap {
     public var w:Int;
     public var h:Int;
     private var map:Array<Array<Int>> = new Array<Array<Int>>();
+    public var cities:Array<City> = new Array<City>();
 
-    public function new(w:Int, h:Int) {
+    private var rx:Float;
+    private var ry:Float;
+
+    public function new(w:Int, h:Int, cityCt:Int) {
+        rx = FlxRandom.floatRanged(0.0, 4096.0);
+        ry = FlxRandom.floatRanged(0.0, 4096.0);
         this.w = w;
         this.h = h;
-        var v;
         for (x in 0 ... w) {
             var col:Array<Int> = new Array<Int>();
             map.push(col);
             for (y in 0 ... h) {
-                /*if (x%10 == 0) {
-                    if (y%10 == 0) {
-                        col.push(FlxRandom.intRanged(0, 3));
-                    } else {
-                        col.push(col[y-1]);
-                    }
-                } else {
-                    col.push(map[x-1][y]);
-                }*/
-                col.push(getTerrain(x, y));
+                col.push(genTerrain(x, y));
             }
+        }
+        for (i in 0 ... cityCt) {
+            cities.push(new City(FlxRandom.floatRanged(w, 9*w), FlxRandom.floatRanged(h, 9*h)));
         }
     }
 
@@ -44,7 +43,7 @@ class WorldMap {
     // Simplex Noise
 
     private function genTerrain(x:Int, y:Int):Int {
-        return Std.int(4 * (simplexNoise(x/8.0, y/8.0)-0.1));
+        return Std.int(2 * (simplexNoise(rx+x/64.0, ry+y/64.0)+1.0));
     }
 
     // Hardcore4Life Simplex

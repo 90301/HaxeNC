@@ -53,6 +53,15 @@ class PlayState extends FlxState
                 tile.y = 10*y;
                 tileCol.push(tile);
             }
+            for (city in Main.map.cities) {
+                var citySprite = new FlxSprite();
+                citySprite.makeGraphic(100, 100, FlxColor.PURPLE);
+                citySprite.setGraphicSize(10, 10);
+                citySprite.updateHitbox();
+                citySprite.x = city.x;
+                citySprite.y = city.y;
+                add(citySprite);
+            }
         }
 
         playerSprite = new FlxSprite();

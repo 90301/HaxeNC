@@ -1,11 +1,12 @@
 package ;
 class City {
 
-    var x:Float = 0.0;
-    var y:Float = 0.0;
+    public var x:Float = 0.0;
+    public var y:Float = 0.0;
 
 
-    public function new() {
-
+    public function new(x:Float, y:Float) {
+        this.x = x;
+        this.y = y;
     }
 }

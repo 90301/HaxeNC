@@ -11,7 +11,7 @@ import flixel.FlxState;
 
 class Main extends Sprite 
 {
-    public static var map = new WorldMap(250, 250);
+    public static var map = new WorldMap(250, 250, 10);
     public static var player = new Player();
 
     public static var mgl = new MasterGoodList();
