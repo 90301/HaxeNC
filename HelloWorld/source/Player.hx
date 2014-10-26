@@ -2,7 +2,7 @@ package ;
 import goodinv.GoodI;
 import Math;
 class Player {
-    var inventory:Array<GoodI> = new Array<GoodI>();
+    public var inventory:Array<GoodI> = new Array<GoodI>();
     public var x:Float = 0.0;
     public var y:Float = 0.0;
     var moveSpeed:Float = 2.0;
