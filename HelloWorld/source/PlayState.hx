@@ -86,6 +86,7 @@ class PlayState extends FlxState
             }
         }
 
+        Main.player.move();
         playerSprite.x = Main.player.x;
         playerSprite.y = Main.player.y;
 
