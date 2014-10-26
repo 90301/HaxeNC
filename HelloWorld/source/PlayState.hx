@@ -9,7 +9,6 @@ import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
 import flixel.util.FlxColor;
 import flixel.util.FlxPoint;
-import flixel.group.FlxTypedGroup;
 
 /**
  * A FlxState which can be used for the actual gameplay.
@@ -27,7 +26,6 @@ class PlayState extends FlxState
     private var fxbtns:Array<FlxButton> = new Array<FlxButton>();
     var playerSprite:FlxSprite;
     var tiles:Array<Array<FlxSprite>> = new Array<Array<FlxSprite>>();
-    var cities:FlxTypedGroup<City>;
 
 	override public function create():Void
 	{
@@ -55,13 +53,14 @@ class PlayState extends FlxState
                 tile.y = 10*y;
                 tileCol.push(tile);
             }
-            cities = new FlxTypedGroup<City>();
-            add(cities);
             for (city in Main.map.cities) {
-                city.makeGraphic(100, 100, FlxColor.PURPLE);
-                city.setGraphicSize(10, 10);
-                city.updateHitbox();
-                cities.add(city);
+                var citySprite = new FlxSprite();
+                citySprite.makeGraphic(100, 100, FlxColor.PURPLE);
+                citySprite.setGraphicSize(10, 10);
+                citySprite.updateHitbox();
+                citySprite.x = city.x;
+                citySprite.y = city.y;
+                add(citySprite);
             }
         }
 
@@ -143,16 +142,7 @@ class PlayState extends FlxState
         playerSprite.y = Main.player.y;
 
 		super.update();
-
-        FlxG.overlap(playerSprite, cities, touchCity);
 	}
-
-    private var hud:HUD = null;
-
-    private function touchCity(ps:FlxSprite, city:City):Void {
-        hud = new HUD();
-        add(hud);
-    }
 
     override public function draw() {
         var camW = FlxG.camera.width;

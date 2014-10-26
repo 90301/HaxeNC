@@ -1,5 +1,5 @@
 package goodinv;
-class FoodI {
+class Food {
     var deterioration = 100;
     var decay = 0;
 
