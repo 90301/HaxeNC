@@ -22,9 +22,8 @@ class MenuState extends FlxState
         inti=0;
         //var ftxt = new FlxText(inti,0,100,"Hello World");
         //add(ftxt);
-        _btnPlay = new FlxButton(0,0,"play",clickPlay);
+        _btnPlay = new FlxButton(FlxG.width/2 - 50, FlxG.height/3, "play", clickPlay);
         add(_btnPlay);
-        //_btnPlay.screenCenter();
 		super.create();
 	}
 

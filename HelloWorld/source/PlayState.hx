@@ -59,6 +59,8 @@ class PlayState extends FlxState
         add(playerSprite);
 
         FlxG.camera.follow(playerSprite, FlxCamera.STYLE_TOPDOWN_TIGHT, 2);
+        FlxG.camera.setBounds(0, 0, 10*Main.map.w, 10*Main.map.h, true);
+        FlxG.camera.flash(0);
 
         super.create();
 	}
