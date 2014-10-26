@@ -44,7 +44,8 @@ class PlayState extends FlxState
 		super.destroy();
 	}
 
-    private var mouseStartX=0, mouseStartY=0;
+    private var mouseStartX=0.0;
+    private var mouseStartY=0.0;
     private var mouseDragging=false;
 
 	/**
@@ -82,7 +83,7 @@ class PlayState extends FlxState
         if (FlxG.mouse.justReleased) {
             if (mouseDragging) {
             } else {
-                Main.player.setDest(FlxG.mouse.x, FlxG.mouse.y);
+                Main.player.setDest(Std.int(FlxG.mouse.x), Std.int(FlxG.mouse.y));
             }
         }
 
