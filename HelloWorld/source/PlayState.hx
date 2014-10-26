@@ -27,9 +27,8 @@ class PlayState extends FlxState
 	{
         playerSprite = new FlxSprite();
         playerSprite.loadGraphic("assets/images/player.png");
-        playerSprite.width = 10;
-        playerSprite.height = 10;
-        playerSprite.scale.set(0.1, 0.1);
+        playerSprite.setGraphicSize(10, 10);
+        playerSprite.updateHitbox();
         add(playerSprite);
 
 		super.create();
