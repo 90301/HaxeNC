@@ -7,7 +7,8 @@ class GoodI {
     public var quant:Int;
     public function new(itemIDL:Int,quantL:Int) {
         quant = quantL;
-        goodRef = Main.mgl.goodList[itemIDL];
+        //goodRef = Main.mgl.goodList[itemIDL];
+        goodRef = new Good("xxx","food",1,1,1);
     }
 
 }
