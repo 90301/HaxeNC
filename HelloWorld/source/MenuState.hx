@@ -44,7 +44,7 @@ class MenuState extends FlxState
         add(_btnPlay);
 
         playMusic();
-        clickMute();
+        //clickMute();
 
 		super.create();
 	}
