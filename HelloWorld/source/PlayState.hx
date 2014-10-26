@@ -3,9 +3,11 @@ package;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
+import flixel.FlxCamera;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
+import flixel.util.FlxColor;
 
 /**
  * A FlxState which can be used for the actual gameplay.
@@ -25,13 +27,39 @@ class PlayState extends FlxState
 
 	override public function create():Void
 	{
+        for (x in 0 ... Main.map.w) {
+            for (y in 0 ... Main.map.h) {
+                var terrain = Main.map.getTerrain(10*x, 10*y);
+                var tile = new FlxSprite();
+                switch (terrain) {
+                case WorldMap.PLAINS:
+                    tile.loadGraphic("assets/images/plain.png");
+                case WorldMap.FOREST:
+                    tile.loadGraphic("assets/images/tree.png");
+                case WorldMap.MOUNTAINS:
+                    tile.loadGraphic("assets/images/mountain.png");
+                case WorldMap.ROAD:
+                    tile.loadGraphic("assets/images/road.png");
+                default:
+                    tile.makeGraphic(100, 100, FlxColor.RED);
+                }
+                tile.setGraphicSize(10, 10);
+                tile.updateHitbox();
+                tile.x = 10*x;
+                tile.y = 10*y;
+                add(tile);
+            }
+        }
+
         playerSprite = new FlxSprite();
         playerSprite.loadGraphic("assets/images/player.png");
         playerSprite.setGraphicSize(10, 10);
         playerSprite.updateHitbox();
         add(playerSprite);
 
-		super.create();
+        FlxG.camera.follow(playerSprite, FlxCamera.STYLE_TOPDOWN, 1);
+
+        super.create();
 	}
 	
 	/**

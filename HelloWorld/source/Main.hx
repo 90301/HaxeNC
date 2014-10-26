@@ -10,6 +10,7 @@ import flixel.FlxState;
 
 class Main extends Sprite 
 {
+    public static var map = new WorldMap(100, 100);
     public static var player = new Player();
 
 	var gameWidth:Int = 640; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).

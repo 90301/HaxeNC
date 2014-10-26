@@ -4,11 +4,18 @@ import flixel.util.FlxRandom;
 
 class WorldMap {
 
-    public static inline var PLAINS=0, FOREST=1, MOUNTAINS=2, PLAINS=3;
+    public static inline var PLAINS=0;
+    public static inline var FOREST=1;
+    public static inline var MOUNTAINS=2;
+    public static inline var ROAD=3;
 
+    public var w:Int;
+    public var h:Int;
     private var map:Array<Array<Int>> = new Array<Array<Int>>();
 
     public function new(w:Int, h:Int) {
+        this.w = w;
+        this.h = h;
         var v;
         for (x in 0 ... w) {
             var col:Array<Int> = new Array<Int>();
@@ -18,7 +25,7 @@ class WorldMap {
                     if (y%10 == 0) {
                         col.push(FlxRandom.intRanged(0, 3));
                     } else {
-                        col.push(col[y-1])
+                        col.push(col[y-1]);
                     }
                 } else {
                     col.push(map[x-1][y]);
@@ -28,7 +35,7 @@ class WorldMap {
     }
 
     public function getTerrain(x:Int, y:Int) {
-        return map[x][y];
+        return map[Std.int(x/10)][Std.int(y/10)];
     }
 
 }
