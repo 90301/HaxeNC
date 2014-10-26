@@ -68,6 +68,7 @@ class PlayState extends FlxState
         if (FlxG.mouse.justPressed) {
             mouseStartX = FlxG.mouse.x;
             mouseStartY = FlxG.mouse.y;
+            mouseDragging = false;
         }
 
         if (FlxG.mouse.pressed) {
@@ -83,7 +84,7 @@ class PlayState extends FlxState
         if (FlxG.mouse.justReleased) {
             if (mouseDragging) {
             } else {
-                Main.player.setDest(Std.int(FlxG.mouse.x), Std.int(FlxG.mouse.y));
+                Main.player.setDest(FlxG.mouse.x, FlxG.mouse.y);
             }
         }
 
