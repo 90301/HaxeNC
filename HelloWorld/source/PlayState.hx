@@ -29,7 +29,7 @@ class PlayState extends FlxState
         playerSprite.loadGraphic("assets/images/player.png");
         playerSprite.width = 10;
         playerSprite.height = 10;
-        playerSprite.scale.set(0.1, 0.1)
+        playerSprite.scale.set(0.1, 0.1);
         add(playerSprite);
 
 		super.create();
