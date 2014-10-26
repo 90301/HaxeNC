@@ -25,6 +25,7 @@ class MenuState extends FlxState
     static var musics = ["assets/music/Ballad In D Minor.ogg",
                          "assets/music/Sad Atmospheric Blues _B Minor_.ogg",
                          "assets/music/Sarah.ogg"];
+    static var musicPlaying = true;
 
 	override public function create():Void
 	{
@@ -39,7 +40,7 @@ class MenuState extends FlxState
         add(wifat2);
         add(walkerYoutubeText);
         _btnMute = new FlxButton(FlxG.width/2 - 50, FlxG.height/2 + 120, "Mute", clickMute);
-        add(_btnMute);
+        //add(_btnMute);
         _btnPlay = new FlxButton(FlxG.width/2 - 50, FlxG.height/3, "play", clickPlay);
         add(_btnPlay);
 
@@ -58,21 +59,23 @@ class MenuState extends FlxState
         if (bgmusic.playing) {
             bgmusic.pause();
             _btnMute.text = "Unmute";
+            musicPlaying = false;
         } else {
             bgmusic.resume();
             _btnMute.text = "Mute";
+            musicPlaying = true;
         }
     }
 
     public static function playMusic():Void {
-        var wasPlaying = false;
+        /*var wasPlaying = false;
         if (bgmusic != null) {
-            wasPlaying = bgmusic.playing;
-        }
+            wasPlaying = musicPlaying;
+        }*/
         bgmusic = FlxG.sound.play(FlxRandom.getObject(musics), 1, false, true, playMusic);
-        if (wasPlaying) {
+        /*if (!wasPlaying) {
             bgmusic.pause();
-        }
+        }*/
     }
 
 	/**
