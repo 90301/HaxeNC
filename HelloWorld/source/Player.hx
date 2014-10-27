@@ -6,6 +6,7 @@ class Player {
     public var x:Float = 0.0;
     public var y:Float = 0.0;
     var moveSpeed:Float = 2.0;
+    var baseMoveSpeed:Float = 2.0;
     var destX:Float = 0.0;
     var destY:Float = 0.0;
 
@@ -16,9 +17,38 @@ class Player {
         destX=dX;
         destY=dY;
     }
+    /*
+    This sets the moveSpeed variable by checking the terrian at the Players location
+     */
+    public function getMoveSpeed():Void {
+        var xInt:Int=Math.round(x);
+        var yInt:Int=Math.round(y);
+        var terrain:Int = Main.map.getTerrain(xInt,yInt);
+        var mod:Dynamic=1;
+        if (terrain==0) {
+            mod=1.5;
+        }
+        if (terrain==1){
+            mod=.5;
+        }
+
+        if (terrain==2){
+            mod=.3;
+        }
+
+        if (terrain==3){
+            mod=2;
+        }
+
+
+        moveSpeed=baseMoveSpeed*mod;
+    }
     //call this every time you want to move
     //this is a function so we can speed up time
+    //speeding up time can be done by calling this function MULTIPLE times per cycle
+    //this prevents going through walls if we implement that.
     public function move() {
+    getMoveSpeed();
         var xspeed:Float=0;
         var yspeed:Float=0;
         var noRecalc:Bool = false;
