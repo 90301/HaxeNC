@@ -50,11 +50,14 @@ class Player {
         xspeed=diffX*moveSpeed;
         yspeed=diffY*moveSpeed;
         //if (noRecalc != true) {
-            if (Math.abs(x-destX)>Math.abs(xspeed) && Math.abs(y-destY)>Math.abs(yspeed)) {
+            if (Math.abs(x-destX)>Math.abs(xspeed)) {
                 x+=xspeed;
-                y+=yspeed;
             } else {
                 x = destX;
+            }
+            if (Math.abs(y-destY)>Math.abs(yspeed)) {
+                y+=yspeed;
+            } else {
                 y = destY;
             }
         }

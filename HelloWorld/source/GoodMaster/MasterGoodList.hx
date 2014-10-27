@@ -1,7 +1,9 @@
 package goodmaster;
+/*
 import Int;
 import Int;
 import Int;
+*/
 class MasterGoodList {
     public var goodList:Array<Good> = new Array<Good>();
     public function new() {
